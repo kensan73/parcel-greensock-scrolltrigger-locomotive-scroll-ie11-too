@@ -102,9 +102,82 @@
       congue. Donec mauris dolor, congue ac euismod eu, fs sagittis justo. Nam et semper felis, et malesuada erat.</p>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/ScrollTrigger.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/es6-object-assign@1.1.0/dist/object-assign-auto.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Event"></script>
+<script type="text/javascript">
+  (function (elem) {
+
+    // Check if element is a node
+    // https://github.com/Financial-Times/polyfill-service
+    var isNode = function (object) {
+
+      // DOM, Level2
+      if (typeof Node === 'function') {
+        return object instanceof Node;
+      }
+
+      // Older browsers, check if it looks like a Node instance)
+      return object &&
+        typeof object === "object" &&
+        object.nodeName &&
+        object.nodeType >= 1 &&
+        object.nodeType <= 12;
+
+    };
+
+    // Add append() method to prototype
+    for (var i = 0; i < elem.length; i++) {
+      if (!window[elem[i]] || 'append' in window[elem[i]].prototype) continue;
+      window[elem[i]].prototype.append = function () {
+        var argArr = Array.prototype.slice.call(arguments);
+        var docFrag = document.createDocumentFragment();
+
+        for (var n = 0; n < argArr.length; n++) {
+          docFrag.appendChild(isNode(argArr[n]) ? argArr[n] : document.createTextNode(String(argArr[n])));
+        }
+
+        this.appendChild(docFrag);
+      };
+    }
+
+  })(['Element', 'CharacterData', 'DocumentType']);
+</script>
+<script type="text/javascript">
+  if (!Object.prototype.forEach) {
+    Object.defineProperty(Object.prototype, 'forEach', {
+      value: function (callback, thisArg) {
+        if (this == null) {
+          throw new TypeError('Not an object');
+        }
+        thisArg = thisArg || window;
+        for (var key in this) {
+          if (this.hasOwnProperty(key)) {
+            callback.call(thisArg, this[key], key, this);
+          }
+        }
+      }
+    });
+  }
+</script>
+<!--<script type="text/javascript">-->
+<!--  (function () {-->
+<!--    if ( typeof window.CustomEvent === "function" ) return false; //If not IE-->
+
+<!--    function CustomEvent ( event, params ) {-->
+<!--      params = params || { bubbles: false, cancelable: false, detail: undefined };-->
+<!--      var evt = document.createEvent( 'CustomEvent' );-->
+<!--      evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );-->
+<!--      return evt;-->
+<!--    }-->
+
+<!--    CustomEvent.prototype = window.Event.prototype;-->
+
+<!--    window.CustomEvent = CustomEvent;-->
+<!--  })();-->
+<!--</script>-->
 <script src="index.js"></script>
 </body>
 

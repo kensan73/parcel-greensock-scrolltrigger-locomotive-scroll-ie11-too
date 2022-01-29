@@ -1,3 +1,8 @@
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import LocomotiveScroll from 'locomotive-scroll';
+
+gsap.registerPlugin(ScrollTrigger);
 //watch the free video on how this demo was made
 // https://www.snorkl.tv/scrolltrigger-smooth-scroll/
 
