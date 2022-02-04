@@ -11,9 +11,9 @@ body {
     font-size: 3vw;
 }
 
-svg {
-    width: 50%;
-}
+/*svg {*/
+/*    width: 50%;*/
+/*}*/
 
 .clockWrapper {
     background: #fff;
@@ -38,6 +38,15 @@ svg {
     background: #263238;
 }
 
+#circleSvg {
+    z-index: 1;
+    width: 100%;
+}
+h2 {
+    z-index: 10;
+    color: white;
+}
+
 h1 {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
@@ -49,4 +58,23 @@ h1 {
 .content {
     padding: 3vw;
     line-height: 1.8;
+}
+
+.circleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.circleContainer svg {
+    height: 600px;
+}
+
+.leftContent {
+    position: relative;
+}
+
+.rightContent {
+    position: relative;
 }

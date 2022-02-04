@@ -30,6 +30,64 @@ ScrollTrigger.scrollerProxy(".scrollContainer", {
   pinType: document.querySelector(".scrollContainer").style.transform ? "transform" : "fixed"
 });
 
+let master = gsap.timeline({defaults:{ease:"none"}});
+
+let circletl = gsap.timeline({defaults:{ease:"none"}})
+  .fromTo('#circleSvg', {scale: 12}, {scale: .25, duration: 6, ease: 'power4'})
+  .fromTo('#textInsideCircle', {attr: {opacity: 1}}, {attr: {opacity: 0, duration: 6}}, '<')
+  .fromTo('#image1', {attr: {opacity: 1}}, {attr: {opacity: 0}}, "+=4")
+  .fromTo('#image2', {attr: {opacity: 0}}, {attr: {opacity: 1}}, '<')
+
+let lefttl = gsap.timeline({defaults:{ease:"none"}})
+  .fromTo('.circleContainer .leftContent', {
+    opacity: 0,
+    top: '400px',
+    visibility: 'hidden',
+  }, {
+    opacity: 1,
+    duration: 6,
+    top: '0',
+    ease: 'power4',
+    delay: '-.5',
+    visibility: 'visible',
+  })
+  .fromTo('.circleContainer .leftContent', {
+    opacity: 1,
+    top: '0',
+    visibilityZZZ: 'visible',
+  }, {
+    opacity: 0,
+    top: '-400px',
+    visibilityZZZ: 'hidden',
+    duration: 6,
+    ease: 'power4'
+  })
+
+let righttl = gsap.timeline({defaults:{ease:"none"}})
+  .fromTo('.circleContainer .rightContent', {
+    opacity: 0,
+    visibility: 'hidden',
+    top: '400px',
+  }, {
+    visibility: 'visible',
+    opacity: 1,
+    top: '0px',
+    duration: 6,
+    ease: 'power4',
+    delay: '-.5'})
+
+master.add(circletl)
+master.add(lefttl, 2)
+master.add(righttl, 8)
+
+ScrollTrigger.create({
+  trigger:".circleContainer",
+  start:"center center",
+  scroller:".scrollContainer",
+  animation: master,
+  scrub:3,
+  pin:true
+})
 
 
 gsap.set("#bigHand, #smallHand", {svgOrigin:"200 200"})

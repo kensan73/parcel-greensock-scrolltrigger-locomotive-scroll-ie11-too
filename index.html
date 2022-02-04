@@ -8,10 +8,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-    </head>
+</head>
 <body>
 <div class="scrollContainer">
-
   <div class="content">
     <h1>Smooth Scrolling: Yes</h1>
     <p>arcu, non mattis nunc. Pellentesque quis enim eget ex congue ornare quis eu dolor. Sed ac egestas dissim velit
@@ -20,6 +19,41 @@
       ligula. Donec efficitur nunc vitae eros hendrerit feugiat. Phasellus consequat libero sed auctor pulvinar. Duis
       cursus libero at justo aliquet accumsan. Class aptent taciti sociosqu adauris, sagittis sagittis justo. Nam et
       semper felis, et malesuada erat.</p>
+  </div>
+
+  <div class="circleContainer">
+    <div class="leftContent">
+      <h1>Something something</h1>
+      <span>Donec et ultricies arcu, non mattis nunc. Pellentesque quis enim eget ex congue ornare quis eu dolor. Sed ac</span>
+    </div>
+    <div class="circleAnimationContainer">
+      <svg id="circleSvg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 200 200" xml:space="preserve" width="200px">
+            <defs>
+              <!--defines the shape to use for clipping-->
+              <circle id="circle" cx="100" cy="100" r="100" />
+            </defs>
+        <clipPath id="clip">
+              <!--creates the clipping mask from the shape-->
+              <use xlink:href="#circle" overflow="visible"></use>
+            </clipPath>
+        <!--group containing the image with clipping applied-->
+        <g clip-path="url(#clip)">
+              <image id="image1" overflow="visible" width="768" height="432" opacity="1"
+                     xlink:href="http://cp91279.biography.com/Leonardo-da-Vinci_A-Divine-Mind_HD_768x432-16x9.jpg"></image>
+          <image id="image2" overflow="visible" width="692" height="460" opacity="0"
+                 xlink:href="https://cdn.pixabay.com/photo/2018/06/17/20/35/chain-3481377_1280.jpg"></image>
+          <text id="textInsideCircle" x="25%" y="55%" font-family="Verdana" font-size="35" fill="blue">Hello</text>
+        </g>
+      </svg>
+    </div>
+    <div class="rightContent">
+      <h1>Something something</h1>
+      <span>Donec et ultricies arcu, non mattis nunc. Pellentesque quis enim eget ex congue ornare quis eu dolor. Sed ac</span>
+    </div>
+  </div>
+
+  <div class="content">
     <p>Donec et ultricies arcu, non mattis nunc. Pellentesque quis enim eget ex congue ornare quis eu dolor. Sed ac
       egestas dolor, vitae placerat elit. Ut luctus massa sit amet etra cumsan. Class aptent taciti sociosqu adauris,
       sagittis sagittis justo. Nam et semper feli quam facilisis congue. Donec mauris dolor, congue ac euismod eu, fs
@@ -108,11 +142,11 @@
 <script src="https://cdn.jsdelivr.net/npm/es6-object-assign@1.1.0/dist/object-assign-auto.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=Event"></script>
 <script type="text/javascript">
-  (function (elem) {
+  (function(elem) {
 
     // Check if element is a node
     // https://github.com/Financial-Times/polyfill-service
-    var isNode = function (object) {
+    var isNode = function(object) {
 
       // DOM, Level2
       if (typeof Node === 'function') {
@@ -121,7 +155,7 @@
 
       // Older browsers, check if it looks like a Node instance)
       return object &&
-        typeof object === "object" &&
+        typeof object === 'object' &&
         object.nodeName &&
         object.nodeType >= 1 &&
         object.nodeType <= 12;
@@ -131,7 +165,7 @@
     // Add append() method to prototype
     for (var i = 0; i < elem.length; i++) {
       if (!window[elem[i]] || 'append' in window[elem[i]].prototype) continue;
-      window[elem[i]].prototype.append = function () {
+      window[elem[i]].prototype.append = function() {
         var argArr = Array.prototype.slice.call(arguments);
         var docFrag = document.createDocumentFragment();
 
@@ -148,7 +182,7 @@
 <script type="text/javascript">
   if (!Object.prototype.forEach) {
     Object.defineProperty(Object.prototype, 'forEach', {
-      value: function (callback, thisArg) {
+      value: function(callback, thisArg) {
         if (this == null) {
           throw new TypeError('Not an object');
         }
