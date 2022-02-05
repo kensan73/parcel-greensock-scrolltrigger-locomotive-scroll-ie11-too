@@ -43,11 +43,12 @@
                      xlink:href="http://cp91279.biography.com/Leonardo-da-Vinci_A-Divine-Mind_HD_768x432-16x9.jpg"></image>
           <image id="image2" overflow="visible" width="692" height="460" opacity="0"
                  xlink:href="https://cdn.pixabay.com/photo/2018/06/17/20/35/chain-3481377_1280.jpg"></image>
-<!--          <text id="textInsideCircle" x="28%" y="56%" font-family="Verdana" font-size="35" fill="white">Hello</text>-->
-          <text id="textInsideCircle" x="50%" y="50%" dominant-baseline="middle" font-size="15" text-anchor="middle" fill="white">Some Headline</text>
-
-          <!--          <text id="textInsideCircle" x="25%" y="52%" font-family="Verdana" font-size="35" fill="white">Hello</text>-->
-
+          <!-- centered text solution here https://stackoverflow.com/questions/48831606/centering-svg-text-on-ie11-with-text-anchor-middle-and-alignment-baseline-midd -->
+          <text id="textInsideCircle" text-anchor="middle"
+                font-size="15"
+                font-family="Arial"
+                fill="white"
+                x="50%" y="50%" dy="0.35em">Some headline</text>
         </g>
       </svg>
     </div>
